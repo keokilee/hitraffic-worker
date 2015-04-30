@@ -18,5 +18,10 @@ describe('utils', function() {
     it('is defined', function() {
       expect(utils.prefetchAddress).not.to.be.undefined;
     });
+
+    it('returns null for addresses that are not defined', function() {
+      let result = utils.prefetchAddress('foo', 'bar');
+      expect(result).to.be.null;
+    });
   });
 });
