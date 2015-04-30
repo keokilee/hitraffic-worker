@@ -1,7 +1,14 @@
-let addresses = require('./prefetched_addresses');
+let addresses = require('./data/prefetched_addresses');
 
 const KAMEHAMEHA_REGEX = /KAM\sHWY/g;
 
+/**
+ * @function processAddress
+ * Preprocess the address to make it processable by a geocoder.
+ *
+ * @param address The address of the incident
+ * @returns String The processed address (which may not have been changed).
+ */
 function processAddress(address) {
   // Check if address contains "KAM"
   address = address.replace(KAMEHAMEHA_REGEX, "KAMEHAMEHA HWY");
@@ -14,7 +21,7 @@ function processAddress(address) {
  *
  * @param address The address of the incident.
  * @param location The location of the incident.
- * @returns An object containing the latitude and longitude if we have the address stored. Null otherwise.
+ * @returns Object An object containing the latitude and longitude if we have the address stored. Null otherwise.
  */
 function prefetchAddress(address, location) {
   let key = `${address},${location}`;
